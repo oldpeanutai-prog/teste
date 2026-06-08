@@ -9,3 +9,23 @@ class calc:
         if r < 0:
             return f"A sua subtração vai dar negativo! O resultado é {r}."
         return f"O resultado da sua subtração é {r}."
+
+    @staticmethod
+    def mul(a, b):
+        return f"O resultado da sua multiplicação é {a*b}"
+    
+    @staticmethod
+    def div(a, b):
+        if b == 0:
+            return "Não é possível dividir por zero!"
+        return f"O resultado da sua divisão é {a/b}"
+    
+    @staticmethod
+    def pow(a, b):
+        return f"O resultado da sua potência é {a**b}"
+    
+    @staticmethod
+    def sqrt(a):
+        if a < 0:
+            return "Não é possível calcular a raiz quadrada de um número negativo!"
+        return f"O resultado da sua raiz quadrada é {a**0.5}"
