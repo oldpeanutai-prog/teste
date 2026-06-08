@@ -1,9 +1,11 @@
 class calc:
-    def sum(self, a, b):
-        return(f"O resultado da sua subtração é ${a+b}")
+    @staticmethod
+    def sum(a, b):
+        return f"O resultado da sua soma é {a+b}"
     
-    def sub(self, a, b):
-        if(a>b):
-            return(f"O resultado da sua subtração é ${a-b}.")
-        else:
-            return(f"A sua subtração vai dar negativo! O resultado é ${a-b}.")
+    @staticmethod
+    def sub(a, b):
+        r = a - b
+        if r < 0:
+            return f"A sua subtração vai dar negativo! O resultado é {r}."
+        return f"O resultado da sua subtração é {r}."
