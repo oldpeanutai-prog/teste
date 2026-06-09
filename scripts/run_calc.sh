@@ -39,8 +39,10 @@ print_header
 echo ""
 
 # Ir para o diretório do script
-cd "$(dirname "$0")"
-print_info "Diretório: $(pwd)"
+SCRIPT_DIR="$(dirname "$0")"
+cd "$SCRIPT_DIR/.."
+PROJECT_DIR=$(pwd)
+print_info "Diretório do projeto: $PROJECT_DIR"
 echo ""
 
 # Verificar se Python 3 está instalado
@@ -106,8 +108,8 @@ print_info "Versão: ${CYAN}$PYTHON_VERSION${NC}"
 echo ""
 
 # Verificar se app.py existe
-if [ ! -f "app.py" ]; then
-    print_error "Arquivo app.py não encontrado!"
+if [ ! -f "$PROJECT_DIR/app.py" ]; then
+    print_error "Arquivo app.py não encontrado em $PROJECT_DIR!"
     exit 1
 fi
 
@@ -117,7 +119,7 @@ echo -e "${MAGENTA}${BOLD}    Iniciando aplicação...${NC}"
 echo -e "${MAGENTA}${BOLD}═══════════════════════════════════════${NC}"
 echo ""
 
-python3 app.py
+python3 "$PROJECT_DIR/app.py"
 exit_code=$?
 
 echo ""

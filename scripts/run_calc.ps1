@@ -84,8 +84,10 @@ function Compare-PythonVersion([string]$installed, [string]$minimum) {
 Write-Header
 Write-Host ''
 
-Set-Location -Path $PSScriptRoot
-Write-Info "Diretório: $(Get-Location)"
+$scriptDir = Split-Path -Parent $PSScriptRoot
+$projectDir = Split-Path -Parent $scriptDir
+Set-Location -Path $projectDir
+Write-Info "Diretório do projeto: $(Get-Location)"
 Write-Host ''
 
 $minVersion = '3.12.0'
@@ -130,9 +132,9 @@ Write-Info "Usando comando Python: $pythonCmd"
 Write-Info "Versão final: $installedVersion"
 Write-Host ''
 
-$appFile = Join-Path $PSScriptRoot 'app.py'
+$appFile = Join-Path $projectDir 'app.py'
 if (-not (Test-Path $appFile)) {
-    Write-ErrorMsg "Arquivo 'app.py' não encontrado em '$PSScriptRoot'."
+    Write-ErrorMsg "Arquivo 'app.py' não encontrado em '$projectDir'."
     exit 1
 }
 
